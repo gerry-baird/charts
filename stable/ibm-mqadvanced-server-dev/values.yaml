@@ -13,13 +13,13 @@
 # limitations under the License.
 
 # license must be set to "accept" to accept the terms of the IBM license
-license: "not accepted"
+license: "accept"
 
 image:
   # repository is the container repository to use, which must contain IBM MQ Advanced for Developers
-  repository: ibmcom/mq
+  repository: gerrybaird/gerry-mq-hub
   # tag is the tag to use for the container repository
-  tag: 9.1.2.0
+  tag: v1
   # pullSecret is the secret to use when pulling the image from a private registry
   pullSecret:
   # pullPolicy is either IfNotPresent or Always (https://kubernetes.io/docs/concepts/containers/images/)
@@ -38,7 +38,7 @@ arch:
 # persistence section specifies persistence settings which apply to the whole chart
 persistence:
   # enabled is whether to use Persistent Volumes or not
-  enabled: true
+  enabled: false
   # useDynamicProvisioning is whether or not to use Storage Classes to dynamically create Persistent Volumes
   useDynamicProvisioning: true
 
@@ -52,7 +52,7 @@ dataPVC:
   size: 2Gi
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
 
 resources:
   limits:
@@ -75,11 +75,11 @@ security:
 # queueManager section specifies settings for the MQ Queue Manager
 queueManager:
   # name allows you to specify the name to use for the queue manager.  Defaults to the Helm release name.
-  name:
+  name: HUB
   # dev section specifies settings for the MQ developer defaults available in the MQ Advanced for Developers image.
   dev:
     # adminPassword sets the password of the admin user
-    adminPassword:
+    adminPassword: 2fon2fi9dn2i
     # appPassword sets the password of the app user
     appPassword:
 
