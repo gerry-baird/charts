@@ -65,6 +65,8 @@ spec:
             value: {{ .Values.license }}
           - name: MQ_QMGR_NAME
             value: {{ .Values.queueManager.name | default .Release.Name | replace "-" "" }}
+          - name: MQ_DEV
+            value: "false"
           - name: LOG_FORMAT
             value: {{ .Values.log.format | default "basic" }}
           - name: MQ_ENABLE_METRICS
